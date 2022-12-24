@@ -35,7 +35,7 @@
                         new THREE.MeshBasicMaterial({color: 0xcccccc, side: THREE.DoubleSide} )
                     );                      
         // plane.position.set(0, 0, 0);
-        plane.position.set(0, -35, 0);
+        plane.position.set(0, -30, 0);
         plane.rotation.order = "XYZ"
         plane.rotation.x = 90*Math.PI/180;
         scene.add(plane);    
@@ -44,24 +44,45 @@
         // 箱を作成
         const material = new THREE.MeshNormalMaterial();
 
-        //   const geometry = new THREE.BoxGeometry(40, 80, 40);
-        //   const box = new THREE.Mesh(geometry, material);
-        //   scene.add(box);
+        const geometry_backrest = new THREE.BoxGeometry(50, 50, 10);
+        const box_backrest = new THREE.Mesh(geometry_backrest, material);
+        box_backrest.position.set(0, 10, -5)
+        scene.add(box_backrest);
 
+        const geometry_seat = new THREE.BoxGeometry(50, 10, 50);
+        const box_seat = new THREE.Mesh(geometry_seat, material);
+        box_seat.position.set(0, -10, 15)
+        scene.add(box_seat);
 
-        //   const geometry_2 = new THREE.BoxGeometry(40, 60, 40);
-        //   const box_2 = new THREE.Mesh(geometry, material);
-        //   scene.add(box_2);
+        const geometry_leg1 = new THREE.BoxGeometry(10, 30, 10);
+        const box_leg1 = new THREE.Mesh(geometry_leg1, material);
+        box_leg1.position.set(-20, -20, 35)
+        scene.add(box_leg1);
 
-        const material_origin = new THREE.MeshNormalMaterial();
-        const geometry_origin = new THREE.BoxGeometry(10, 10, 10);
-        const box_origin = new THREE.Mesh(geometry_origin, material_origin);
-        scene.add(box_origin);
+        const geometry_leg2 = new THREE.BoxGeometry(10, 30, 10);
+        const box_leg2 = new THREE.Mesh(geometry_leg2, material);
+        box_leg2.position.set(20, -20, 35)
+        scene.add(box_leg2);
 
-        const material_camera = new THREE.MeshNormalMaterial();
-        const geometry_camera = new THREE.BoxGeometry(10, 10, 10);
-        const box_camera = new THREE.Mesh(geometry_camera, material_camera);
-        scene.add(box_camera);
+        const geometry_leg3 = new THREE.BoxGeometry(10, 30, 10);
+        const box_leg3 = new THREE.Mesh(geometry_leg3, material);
+        box_leg3.position.set(-20, -20, -5)
+        scene.add(box_leg3);
+
+        const geometry_leg4 = new THREE.BoxGeometry(10, 30, 10);
+        const box_leg4 = new THREE.Mesh(geometry_leg4, material);
+        box_leg4.position.set(20, -20, -5)
+        scene.add(box_leg4);
+
+        // const material_origin = new THREE.MeshNormalMaterial();
+        // const geometry_origin = new THREE.BoxGeometry(10, 10, 10);
+        // const box_origin = new THREE.Mesh(geometry_origin, material_origin);
+        // scene.add(box_origin);
+
+        // const material_camera = new THREE.MeshNormalMaterial();
+        // const geometry_camera = new THREE.BoxGeometry(10, 10, 10);
+        // const box_camera = new THREE.Mesh(geometry_camera, material_camera);
+        // scene.add(box_camera);
 
         tick();
 
@@ -72,11 +93,12 @@
             i += 1;
             angle_deg = i;
             angle_rad = angle_deg * Math.PI / 180;
-            len = 100
+            len = 150
 
             // camera.position.set(0, 300, +300);
             // camera.rotation.order = "XYZ"
             // camera.rotation.x = -45*Math.PI/180;
+            
             camera.position.set(len * Math.sin(angle_rad), 
                                     10,
                                     len * Math.cos(angle_rad));
