@@ -37,7 +37,7 @@
                 plane.position.set(0, 0, 0);
                 plane.rotation.order = "XYZ"
                 plane.rotation.x = 90*Math.PI/180;
-                scene.add(plane);    
+                // scene.add(plane);    
 
                 // オブジェクトの定義
                 const material = new THREE.MeshPhongMaterial({color: 0xFF0000});
@@ -72,13 +72,38 @@
                 box_leg4.position.set(20, 10, -45)
                 scene.add(box_leg4);
 
+                var rate = 38
+                const geometry_p1 = new THREE.BoxGeometry(5, 5, 5);
+                const box_p1 = new THREE.Mesh(geometry_p1, material);
+                box_p1.position.set(-2700/rate, -2000/rate, 0)
+                scene.add(box_p1);
+
+                const geometry_p2 = new THREE.BoxGeometry(5, 5, 5);
+                const box_p2 = new THREE.Mesh(geometry_p2, material);
+                box_p2.position.set(-2700/rate, 2000/rate, 0)
+                scene.add(box_p2);
+
+                const geometry_p3 = new THREE.BoxGeometry(5, 5, 5);
+                const box_p3 = new THREE.Mesh(geometry_p3, material);
+                box_p3.position.set(2700/rate, -2000/rate, 0)
+                scene.add(box_p3);
+
+                const geometry_p4 = new THREE.BoxGeometry(5, 5, 5);
+                const box_p4 = new THREE.Mesh(geometry_p4, material);
+                box_p4.position.set(2700/rate, 2000/rate, 0)
+                scene.add(box_p4);
+
                 tick();
 
                 // ループ
                 function tick() 
                 {
                     // 角度の取得
+<<<<<<< HEAD
                     let len = 450
+=======
+                    let len = 250
+>>>>>>> master
                     let angle_deg = 0;
                     elm_tb = document.getElementById("tb"); 
                     angle_deg = Number(elm_tb.value)
