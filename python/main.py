@@ -41,21 +41,21 @@ def main():
         cv2.imwrite(os.path.join('.', 'output', 'transed', f'{i}.png'), imgs_transed[-1])
     imgs_transed = np.array(imgs_transed)
 
-    haba = 4
-    neo_image = np.zeros((h, w, 3))
+    dot_w = 4
+    img_stripe = np.zeros((h, w, 3))
     print('生成')
-    for i in tqdm(range(w//haba)):
+    for i in tqdm(range(w//dot_w)):
         if i % 5 == 0:
-            neo_image[:, i*haba:(i+1)*haba, :] = imgs_transed[0][:, i*haba:(i+1)*haba, :]
+            img_stripe[:, i*dot_w:(i+1)*dot_w, :] = imgs_transed[0][:, i*dot_w:(i+1)*dot_w, :]
         elif i % 5 == 1:
-            neo_image[:, i*haba:(i+1)*haba, :] = imgs_transed[1][:, i*haba:(i+1)*haba, :]
+            img_stripe[:, i*dot_w:(i+1)*dot_w, :] = imgs_transed[1][:, i*dot_w:(i+1)*dot_w, :]
         elif i % 5 == 2:
-            neo_image[:, i*haba:(i+1)*haba, :] = imgs_transed[2][:, i*haba:(i+1)*haba, :]
+            img_stripe[:, i*dot_w:(i+1)*dot_w, :] = imgs_transed[2][:, i*dot_w:(i+1)*dot_w, :]
         elif i % 5 == 3:
-            neo_image[:, i*haba:(i+1)*haba, :] = imgs_transed[3][:, i*haba:(i+1)*haba, :]
+            img_stripe[:, i*dot_w:(i+1)*dot_w, :] = imgs_transed[3][:, i*dot_w:(i+1)*dot_w, :]
         elif i % 5 == 4:
-            neo_image[:, i*haba:(i+1)*haba, :] = imgs_transed[4][:, i*haba:(i+1)*haba, :]
-    cv2.imwrite(os.path.join('.', 'output', 'result.png'), neo_image)
+            img_stripe[:, i*dot_w:(i+1)*dot_w, :] = imgs_transed[4][:, i*dot_w:(i+1)*dot_w, :]
+    cv2.imwrite(os.path.join('.', 'output', 'result.png'), img_stripe)
 
 
 if __name__ == '__main__':
