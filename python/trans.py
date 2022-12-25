@@ -3,33 +3,37 @@ import cv2
 import numpy as np
 
 
-def main():
-    # 画像を読み込んでチャネル分割
-    img = cv2.imread(os.path.join('.', 'input', '4.png'))
+# def main():
+#     # 画像を読み込んでチャネル分割
+#     img = cv2.imread(os.path.join('.', 'input', '4.png'))
 
-    # 変換前座標（画像に映るA4用紙の4隅の座標）
-    # uv = np.array([[378, 320], [1017, 284], [378, 771], [1017, 821]])
-    # uv = np.array([[360, 320], [1017, 299], [360, 783], [1017, 801]])
-    # uv = np.array([[341, 305], [1010, 305], [341, 794], [1010, 794]])
-    # uv = np.array([[332, 296], [992, 314], [332, 807], [992, 780]])
-    uv = np.array([[333, 287], [956, 323], [333, 821], [956, 765]])
+#     # 変換前座標（画像に映るA4用紙の4隅の座標）
+#     # uv = np.array([[378, 320], [1017, 284], [378, 771], [1017, 821]])
+#     # uv = np.array([[360, 320], [1017, 299], [360, 783], [1017, 801]])
+#     # uv = np.array([[341, 305], [1010, 305], [341, 794], [1010, 794]])
+#     # uv = np.array([[332, 296], [992, 314], [332, 807], [992, 780]])
+#     uv = np.array([[333, 287], [956, 323], [333, 821], [956, 765]])
     
-    # 変換後座標
-    len_s = 2700
-    len_t = 2000
-    st = np.array([[0, 0], [len_s, 0], [0, len_t], [len_s, len_t]])
+#     # 変換後座標
+#     len_s = 2700
+#     len_t = 2000
+#     st = np.array([[0, 0], [len_s, 0], [0, len_t], [len_s, len_t]])
 
+
+#     # 画像の書き出し
+#     cv2.imwrite(os.path.join('.', '4.png'), img_transed)
+
+def transform(img, uv, st):
     # 射影変換のパラメータ（h11, h12, h13, h21, h22, h23, h31, h32）の計算
     h = calParam(st, uv)
 
     # 各チャンネルごとに射影変換を実行
     img_transed = []
     for img_channel in cv2.split(img):
-        img_transed.append(transform(img_channel, st, h))
+        img_transed.append(transformByParam(img_channel, st, h))
     img_transed = np.array(img_transed, dtype=np.uint8).transpose(1, 2, 0)
 
-    # 画像の書き出し
-    cv2.imwrite(os.path.join('.', '4.png'), img_transed)
+    return img_transed
 
 
 # 射影変換のパラメータ（h11, h12, h13, h21, h22, h23, h31, h32）の計算
@@ -49,7 +53,7 @@ def calParam(st, uv):
 
 
 # 射影変換の実行
-def transform(img, st, h):
+def transformByParam(img, st, h):
     len_s, len_t = st[3][0], st[3][1]
     img_transed = np.zeros((len_t, len_s))
     for t in range(len_t):
@@ -64,7 +68,3 @@ def transform(img, st, h):
             img_transed[t, s] = (1-q)*((1-p)*img[vi, ui] + p*img[vi, ui+1]) + q*((1-p)*img[vi+1, ui] + p*img[vi+1, ui+1])
 
     return img_transed.astype(np.uint8)
-
-
-if __name__ == '__main__':
-    main()
