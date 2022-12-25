@@ -9,8 +9,8 @@
             function init() 
             {
                 // サイズを指定
-                const width = 2700/4;
-                const height = 2000/4;
+                const width = 2700/4.7;
+                const height = 2000/4.7;
 
                 // レンダラーを作成
                 const renderer = new THREE.WebGLRenderer({
@@ -27,14 +27,14 @@
                 scene.add(light);
 
                 // カメラの定義
-                let camera = new THREE.PerspectiveCamera(45, width / height);
+                let camera = new THREE.PerspectiveCamera(10, width / height);
 
                 // 平面の定義   
                 var plane = new THREE.Mesh(                                      
                                 new THREE.PlaneGeometry(300, 300, 10, 10),
                                 new THREE.MeshBasicMaterial({color: 0xcccccc, side: THREE.DoubleSide} )
                             );
-                plane.position.set(0, -30, 0);
+                plane.position.set(0, 0, 0);
                 plane.rotation.order = "XYZ"
                 plane.rotation.x = 90*Math.PI/180;
                 scene.add(plane);    
@@ -44,32 +44,32 @@
 
                 const geometry_backrest = new THREE.BoxGeometry(50, 50, 10);
                 const box_backrest = new THREE.Mesh(geometry_backrest, material);
-                box_backrest.position.set(0, 10, -5)
+                box_backrest.position.set(0, 40, -45)
                 scene.add(box_backrest);
 
                 const geometry_seat = new THREE.BoxGeometry(50, 10, 50);
                 const box_seat = new THREE.Mesh(geometry_seat, material);
-                box_seat.position.set(0, -10, 15)
+                box_seat.position.set(0, 20, -25)
                 scene.add(box_seat);
 
                 const geometry_leg1 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg1 = new THREE.Mesh(geometry_leg1, material);
-                box_leg1.position.set(-20, -20, 35)
+                box_leg1.position.set(-20, 10, -5)
                 scene.add(box_leg1);
 
                 const geometry_leg2 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg2 = new THREE.Mesh(geometry_leg2, material);
-                box_leg2.position.set(20, -20, 35)
+                box_leg2.position.set(20, 10, -5)
                 scene.add(box_leg2);
 
                 const geometry_leg3 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg3 = new THREE.Mesh(geometry_leg3, material);
-                box_leg3.position.set(-20, -20, -5)
+                box_leg3.position.set(-20, 10, -45)
                 scene.add(box_leg3);
 
                 const geometry_leg4 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg4 = new THREE.Mesh(geometry_leg4, material);
-                box_leg4.position.set(20, -20, -5)
+                box_leg4.position.set(20, 10, -45)
                 scene.add(box_leg4);
 
                 tick();
@@ -78,7 +78,7 @@
                 function tick() 
                 {
                     // 角度の取得
-                    let len = 150
+                    let len = 450
                     let angle_deg = 0;
                     elm_tb = document.getElementById("tb"); 
                     angle_deg = Number(elm_tb.value)
@@ -89,10 +89,10 @@
 
                     // カメラと照明位置の計算
                     light.position.set(len * Math.sin(angle_rad), 
-                                            10,
+                                            35,
                                             len * Math.cos(angle_rad));
                     camera.position.set(len * Math.sin(angle_rad), 
-                                            10,
+                                            35,
                                             len * Math.cos(angle_rad));
                     camera.rotation.order = "XYZ"
                     camera.rotation.y = angle_rad;
