@@ -44,32 +44,32 @@
 
                 const geometry_backrest = new THREE.BoxGeometry(50, 50, 10);
                 const box_backrest = new THREE.Mesh(geometry_backrest, material);
-                box_backrest.position.set(0, 40, -45)
+                box_backrest.position.set(0, 5, 5)
                 scene.add(box_backrest);
 
                 const geometry_seat = new THREE.BoxGeometry(50, 10, 50);
                 const box_seat = new THREE.Mesh(geometry_seat, material);
-                box_seat.position.set(0, 20, -25)
+                box_seat.position.set(0, -15, 25)
                 scene.add(box_seat);
 
                 const geometry_leg1 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg1 = new THREE.Mesh(geometry_leg1, material);
-                box_leg1.position.set(-20, 10, -5)
+                box_leg1.position.set(-20, -25, 45)
                 scene.add(box_leg1);
 
                 const geometry_leg2 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg2 = new THREE.Mesh(geometry_leg2, material);
-                box_leg2.position.set(20, 10, -5)
+                box_leg2.position.set(20, -25, 45)
                 scene.add(box_leg2);
 
                 const geometry_leg3 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg3 = new THREE.Mesh(geometry_leg3, material);
-                box_leg3.position.set(-20, 10, -45)
+                box_leg3.position.set(-20, -25, 5)
                 scene.add(box_leg3);
 
                 const geometry_leg4 = new THREE.BoxGeometry(10, 30, 10);
                 const box_leg4 = new THREE.Mesh(geometry_leg4, material);
-                box_leg4.position.set(20, 10, -45)
+                box_leg4.position.set(20, -25, 5)
                 scene.add(box_leg4);
 
                 var rate = 38
@@ -99,7 +99,7 @@
                 function tick() 
                 {
                     // 角度の取得
-                    let len = 450
+                    let len = 1000
                     let angle_deg = 0;
                     elm_tb = document.getElementById("tb"); 
                     angle_deg = Number(elm_tb.value)
@@ -110,10 +110,10 @@
 
                     // カメラと照明位置の計算
                     light.position.set(len * Math.sin(angle_rad), 
-                                            35,
+                                            0,
                                             len * Math.cos(angle_rad));
                     camera.position.set(len * Math.sin(angle_rad), 
-                                            35,
+                                            0,
                                             len * Math.cos(angle_rad));
                     camera.rotation.order = "XYZ"
                     camera.rotation.y = angle_rad;
