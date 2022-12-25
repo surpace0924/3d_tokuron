@@ -31,16 +31,16 @@
 
                 // 平面の定義   
                 var plane = new THREE.Mesh(                                      
-                                new THREE.PlaneGeometry(300, 300, 10, 10),
+                                new THREE.PlaneGeometry(114, 84, 10, 10),
                                 new THREE.MeshBasicMaterial({color: 0xcccccc, side: THREE.DoubleSide} )
                             );
-                plane.position.set(0, 0, 0);
-                plane.rotation.order = "XYZ"
-                plane.rotation.x = 90*Math.PI/180;
-                // scene.add(plane);    
+                plane.position.set(0, -5, -5);
+                // plane.rotation.order = "XYZ"
+                // plane.rotation.x = 90*Math.PI/180;
+                scene.add(plane);    
 
                 // オブジェクトの定義
-                const material = new THREE.MeshPhongMaterial({color: 0xFF0000});
+                const material = new THREE.MeshNormalMaterial({color: 0xFF0000});
 
                 const geometry_backrest = new THREE.BoxGeometry(50, 50, 10);
                 const box_backrest = new THREE.Mesh(geometry_backrest, material);
@@ -72,26 +72,26 @@
                 box_leg4.position.set(20, -25, 5)
                 scene.add(box_leg4);
 
-                var rate = 38
-                const geometry_p1 = new THREE.BoxGeometry(5, 5, 5);
-                const box_p1 = new THREE.Mesh(geometry_p1, material);
-                box_p1.position.set(-2700/rate, -2000/rate, 0)
-                scene.add(box_p1);
+                // var rate = 38
+                // const geometry_p1 = new THREE.BoxGeometry(5, 5, 5);
+                // const box_p1 = new THREE.Mesh(geometry_p1, material);
+                // box_p1.position.set(-114/2, -84/2-5, 0)
+                // scene.add(box_p1);
 
-                const geometry_p2 = new THREE.BoxGeometry(5, 5, 5);
-                const box_p2 = new THREE.Mesh(geometry_p2, material);
-                box_p2.position.set(-2700/rate, 2000/rate, 0)
-                scene.add(box_p2);
+                // const geometry_p2 = new THREE.BoxGeometry(5, 5, 5);
+                // const box_p2 = new THREE.Mesh(geometry_p2, material);
+                // box_p2.position.set(-114/2, 84/2-5, 0)
+                // scene.add(box_p2);
 
-                const geometry_p3 = new THREE.BoxGeometry(5, 5, 5);
-                const box_p3 = new THREE.Mesh(geometry_p3, material);
-                box_p3.position.set(2700/rate, -2000/rate, 0)
-                scene.add(box_p3);
+                // const geometry_p3 = new THREE.BoxGeometry(5, 5, 5);
+                // const box_p3 = new THREE.Mesh(geometry_p3, material);
+                // box_p3.position.set(114/2, -84/2-5, 0)
+                // scene.add(box_p3);
 
-                const geometry_p4 = new THREE.BoxGeometry(5, 5, 5);
-                const box_p4 = new THREE.Mesh(geometry_p4, material);
-                box_p4.position.set(2700/rate, 2000/rate, 0)
-                scene.add(box_p4);
+                // const geometry_p4 = new THREE.BoxGeometry(5, 5, 5);
+                // const box_p4 = new THREE.Mesh(geometry_p4, material);
+                // box_p4.position.set(114/2, 84/2-5, 0)
+                // scene.add(box_p4);
 
                 tick();
 
