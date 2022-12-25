@@ -21,6 +21,7 @@
 
                 // シーンの定義
                 const scene = new THREE.Scene();
+                scene.background = new THREE.Color( 0xcccccc );
                 
                 // 平行光源の定義
                 const light = new THREE.DirectionalLight(0xFFFFFF, 1);
@@ -32,7 +33,7 @@
                 // 平面の定義   
                 var plane = new THREE.Mesh(                                      
                                 new THREE.PlaneGeometry(114, 84, 10, 10),
-                                new THREE.MeshBasicMaterial({color: 0xcccccc, side: THREE.DoubleSide} )
+                                new THREE.MeshBasicMaterial({color: 0x000000, side: THREE.DoubleSide} )
                             );
                 plane.position.set(0, -5, -5);
                 // plane.rotation.order = "XYZ"
